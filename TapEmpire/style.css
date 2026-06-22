@@ -1,88 +1,320 @@
+/* ==========================================
+   TAP EMPIRE
+   STYLE.CSS
+   ========================================== */
 
-/* ===================================== */
-/* CITY */
-/* ===================================== */
+:root{
+
+--bg:#0f1117;
+--panel:#181b24;
+--panel2:#232838;
+--accent:#ffd54f;
+--accent2:#ff9800;
+--green:#00e676;
+--red:#ff5252;
+--blue:#4fc3f7;
+--text:#ffffff;
+--shadow:0 15px 40px rgba(0,0,0,.35);
+--radius:18px;
+
+}
+
+*{
+
+margin:0;
+padding:0;
+box-sizing:border-box;
+
+}
+
+html{
+
+scroll-behavior:smooth;
+
+}
+
+body{
+
+background:linear-gradient(180deg,#0d1117,#1b2333);
+
+font-family:Inter,Arial,sans-serif;
+
+color:white;
+
+overflow-x:hidden;
+
+min-height:100vh;
+
+}
+
+/* ===========================
+HUD
+=========================== */
+
+#hud{
+
+position:fixed;
+
+top:15px;
+
+left:50%;
+
+transform:translateX(-50%);
+
+width:min(1300px,95%);
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+background:rgba(20,25,40,.8);
+
+backdrop-filter:blur(14px);
+
+padding:15px 25px;
+
+border-radius:20px;
+
+box-shadow:var(--shadow);
+
+z-index:999;
+
+}
+
+.money{
+
+font-size:34px;
+
+font-weight:800;
+
+color:var(--accent);
+
+}
+
+.gems{
+
+font-size:22px;
+
+color:#4fc3f7;
+
+}
+
+/* ===========================
+MAIN
+=========================== */
+
+#game{
+
+width:min(1300px,95%);
+
+margin:120px auto;
+
+}
+
+/* ===========================
+CITY
+=========================== */
 
 #city{
 
 position:relative;
 
-width:100%;
+height:420px;
 
-height:240px;
-
-margin-bottom:20px;
+background:linear-gradient(#72d7ff,#b7ecff);
 
 overflow:hidden;
 
-background:linear-gradient(#6ec6ff,#bfe9ff);
+border-radius:25px;
 
-border-radius:20px;
+box-shadow:var(--shadow);
 
 }
 
-.building{
+/* SKY */
+
+.sky{
 
 position:absolute;
 
-bottom:0;
-
-width:60px;
-
-border-radius:6px 6px 0 0;
-
-animation:pop .4s;
+inset:0;
 
 }
 
-.house{
+/* SUN */
+
+.sun{
+
+position:absolute;
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:#ffd54f;
+
+top:40px;
+
+right:80px;
+
+box-shadow:0 0 70px #ffd54f;
+
+}
+
+/* MOON */
+
+.moon{
+
+position:absolute;
+
+width:70px;
 
 height:70px;
 
-background:#ffb347;
+border-radius:50%;
+
+background:white;
+
+top:60px;
+
+right:120px;
+
+display:none;
 
 }
 
-.shop{
+/* CLOUDS */
 
-height:100px;
+.cloud{
 
-background:#6dd56d;
+position:absolute;
 
-}
+width:180px;
 
-.factory{
+height:60px;
 
-height:140px;
+background:white;
 
-background:#888;
+border-radius:60px;
 
-}
+opacity:.85;
 
-.tower{
-
-height:180px;
-
-background:#4c6fff;
+animation:cloudMove 40s linear infinite;
 
 }
 
-@keyframes pop{
+.cloud::before{
+
+content:"";
+
+position:absolute;
+
+width:80px;
+
+height:80px;
+
+background:white;
+
+border-radius:50%;
+
+left:25px;
+
+top:-35px;
+
+}
+
+.cloud::after{
+
+content:"";
+
+position:absolute;
+
+width:90px;
+
+height:90px;
+
+background:white;
+
+border-radius:50%;
+
+right:25px;
+
+top:-45px;
+
+}
+
+@keyframes cloudMove{
 
 from{
 
-transform:translateY(80px);
-
-opacity:0;
+transform:translateX(-250px);
 
 }
 
 to{
 
-transform:translateY(0);
-
-opacity:1;
+transform:translateX(1700px);
 
 }
+
+}
+
+/* GROUND */
+
+.ground{
+
+position:absolute;
+
+bottom:0;
+
+left:0;
+
+width:100%;
+
+height:90px;
+
+background:#4caf50;
+
+}
+
+/* ROAD */
+
+.road{
+
+position:absolute;
+
+bottom:70px;
+
+width:100%;
+
+height:70px;
+
+background:#444;
+
+}
+
+.road::after{
+
+content:"";
+
+position:absolute;
+
+top:33px;
+
+left:0;
+
+width:100%;
+
+height:5px;
+
+background:repeating-linear-gradient(
+90deg,
+white 0 50px,
+transparent 50px 90px
+);
 
 }
